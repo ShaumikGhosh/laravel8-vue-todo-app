@@ -13,6 +13,13 @@ class UserController extends Controller
     protected $repository;
     protected $request;
 
+    /**
+     * @param \App\Services\User\UserInterface
+     * 
+     * @param \Illuminate\Http\Request $request
+     * 
+     * @return void
+     */
     public function __construct(UserInterface $repo, Request $request)
     {
         $this->repository = $repo;
@@ -23,12 +30,18 @@ class UserController extends Controller
         );    
     }
 
+    /**
+     * @return mixed
+     */
     public function authenticate()
     {
         $credentials = $this->request->only('email', 'password');
         return $this->repository->loginUser($credentials);
     }
 
+    /**
+     * @return mixed
+     */
     public function register()
     {
         $validator = Validator::make($this->request->all(), [
@@ -44,6 +57,9 @@ class UserController extends Controller
         return $this->repository->signUp($this->request->all());
     }
 
+    /**
+     * @return mixed
+     */
     public function getAuthenticatedUser()
     {
         return $this->repository->loggedInUser();

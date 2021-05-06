@@ -7,7 +7,7 @@ import axios from 'axios'
 
 
 Vue.prototype.$axios = axios;
-Vue.prototype.$base_path = 'http://localhost:90/ahadmurtaza8';
+Vue.prototype.$base_path = 'http://localhost:90/laravel8-vue-todo-app';
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
